@@ -1,8 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import jinja2
 import os
+from common.apidocs import apidocs
 
 app = Flask(__name__)
+
+apidocs.register(app)
 
 def render_template1(template, **context):
     template = os.path.split(template)
@@ -16,9 +19,11 @@ def render_template1(template, **context):
 def front_home():
     return render_template1("frontend/templates/index.html")
 
-@app.route('/admin')
+@app.route('/admin/<userid>')
 def admin_home():
     return render_template1("admin/templates/index.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+

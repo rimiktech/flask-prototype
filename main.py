@@ -9,13 +9,10 @@ from common.apidocs import apidocs
 apidocs.register(app)
 
 
-from common.loginmanager import LoginManager
-LoginManager.views["login"] = "loginPage"
-LoginManager.views["home"] = "home"
+#from common.loginmanager import LoginManager
+#LoginManager.views["login"] = "loginPage"
+#LoginManager.views["home"] = "home"
 #@LoginManager.authorized
-
-
-
 
 def render_template1(template, **context):
     template = os.path.split(template)
@@ -27,10 +24,12 @@ def render_template1(template, **context):
 
 @app.route('/')
 def front_home():
+    """This is home page for frontend"""
     return render_template1("frontend/templates/index.html")
 
 @app.route('/admin/<userid>')
 def admin_home():
+    """This is home page for admin"""
     return render_template1("admin/templates/index.html")
 
 if __name__ == '__main__':

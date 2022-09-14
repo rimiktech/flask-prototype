@@ -1,11 +1,21 @@
 from flask import Flask, render_template, jsonify
 import jinja2
 import os
-from common.apidocs import apidocs
 
 app = Flask(__name__)
 
+
+from common.apidocs import apidocs
 apidocs.register(app)
+
+
+from common.loginmanager import LoginManager
+LoginManager.views["login"] = "loginPage"
+LoginManager.views["home"] = "home"
+#@LoginManager.authorized
+
+
+
 
 def render_template1(template, **context):
     template = os.path.split(template)

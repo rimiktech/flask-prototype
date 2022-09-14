@@ -20,3 +20,5 @@ class response:
     def __str__(self): return self.body
 
     def get_json(self): return Response(self.body, mimetype="application/json")
+
+    def get_html(self): return Response(self.body, mimetype="application/json")
